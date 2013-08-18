@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>io.vov.vitamio</groupId>
+	<artifactId>vitamio</artifactId>
+	<version>4.0</version>
+	<packaging>apklib</packaging>
+
+	<properties>
+		<platform.version>4.0.1.2</platform.version>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+			<version>${platform.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>annotations</artifactId>
+			<version>4.1.1.4</version>
+		</dependency>
+
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>ARMv5TE</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>io.vov.vitamio</groupId>
+					<artifactId>vitamio-vinit</artifactId>
+					<version>${project.version}</version>
+					<classifier>ARMv5TE</classifier>
+					<type>so</type>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>ARMv7</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>io.vov.vitamio</groupId>
+					<artifactId>vitamio-vinit</artifactId>
+					<version>${project.version}</version>
+					<classifier>ARMv7</classifier>
+					<type>so</type>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+				<artifactId>android-maven-plugin</artifactId>
+				<extensions>true</extensions>
+				<version>3.6.0</version>
+				<goals>
+					<goal>ndk-build</goal>
+				</goals>
+				<configuration>
+					<androidManifestFile>${project.basedir}/AndroidManifest.xml</androidManifestFile>
+					<assetsDirectory>${project.basedir}/assets</assetsDirectory>
+					<resourceDirectory>${project.basedir}/res</resourceDirectory>
+
+					<sourceDirectories>${project.basedir}/src</sourceDirectories>
+					<sdk>
+						<platform>17</platform>
+					</sdk>
+					<proguard>
+						<skip>true</skip>
+					</proguard>
+					<sign>
+						<debug>false</debug>
+					</sign>
+					<deleteConflictingFiles>true</deleteConflictingFiles>
+					<attachNativeArtifacts>true</attachNativeArtifacts>
+					<clearNativeArtifacts>false</clearNativeArtifacts>
+					<undeployBeforeDeploy>true</undeployBeforeDeploy>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>uphyjp-3rdparty</id>
+			<url>http://uphy.jp/nexus/content/repositories/thirdparty/</url>
+		</repository>
+	</repositories>
+
+</project>
