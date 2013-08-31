@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.vov.vitamio</groupId>
 	<artifactId>vitamio</artifactId>
-	<version>4.0</version>
+	<version>4.1.0</version>
 	<packaging>apklib</packaging>
 
 	<properties>
