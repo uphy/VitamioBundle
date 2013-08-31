@@ -24,12 +24,11 @@
 			<artifactId>annotations</artifactId>
 			<version>4.1.1.4</version>
 		</dependency>
-
 	</dependencies>
 
 	<profiles>
 		<profile>
-			<id>ARMv5TE</id>
+			<id>ARMv5</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
@@ -38,10 +37,21 @@
 					<groupId>io.vov.vitamio</groupId>
 					<artifactId>vitamio-vinit</artifactId>
 					<version>${project.version}</version>
-					<classifier>ARMv5TE</classifier>
+					<classifier>ARMv5</classifier>
 					<type>so</type>
 				</dependency>
 			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+						<artifactId>android-maven-plugin</artifactId>
+						<configuration>
+							<classifier>ARMv5</classifier>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 		<profile>
 			<id>ARMv7</id>
@@ -57,6 +67,43 @@
 					<type>so</type>
 				</dependency>
 			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+						<artifactId>android-maven-plugin</artifactId>
+						<configuration>
+							<classifier>ARMv7</classifier>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>x86</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>io.vov.vitamio</groupId>
+					<artifactId>vitamio-vinit</artifactId>
+					<version>${project.version}</version>
+					<classifier>x86</classifier>
+					<type>so</type>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+						<artifactId>android-maven-plugin</artifactId>
+						<configuration>
+							<classifier>x86</classifier>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 
@@ -72,11 +119,6 @@
 					<goal>ndk-build</goal>
 				</goals>
 				<configuration>
-					<androidManifestFile>${project.basedir}/AndroidManifest.xml</androidManifestFile>
-					<assetsDirectory>${project.basedir}/assets</assetsDirectory>
-					<resourceDirectory>${project.basedir}/res</resourceDirectory>
-
-					<sourceDirectories>${project.basedir}/src</sourceDirectories>
 					<sdk>
 						<platform>17</platform>
 					</sdk>
@@ -89,7 +131,6 @@
 					<deleteConflictingFiles>true</deleteConflictingFiles>
 					<attachNativeArtifacts>true</attachNativeArtifacts>
 					<clearNativeArtifacts>false</clearNativeArtifacts>
-					<undeployBeforeDeploy>true</undeployBeforeDeploy>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -97,9 +138,17 @@
 
 	<repositories>
 		<repository>
-			<id>uphyjp-3rdparty</id>
+			<id>uphyjp-thirdparty</id>
 			<url>http://uphy.jp/nexus/content/repositories/thirdparty/</url>
 		</repository>
 	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>uphyjp-thirdparty</id>
+			<name>uphy.jp - SNAPSHOT</name>
+			<url>http://uphy.jp/nexus/content/repositories/thirdparty/</url>
+		</repository>
+	</distributionManagement>
 
 </project>
