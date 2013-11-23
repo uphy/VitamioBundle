@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.vov.vitamio</groupId>
 	<artifactId>vitamio</artifactId>
-	<version>4.1.0</version>
+	<version>4.1.1</version>
 	<packaging>apklib</packaging>
 
 	<properties>
-		<platform.version>4.0.1.2</platform.version>
+		<platform.version>4.1.1.4</platform.version>
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
 	</properties>
@@ -19,6 +19,7 @@
 			<version>${platform.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>com.google.android</groupId>
 			<artifactId>annotations</artifactId>
