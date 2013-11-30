@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="vitamio_library_app_name">Vitamio ライブラリ</string>
+    <string name="vitamio_init_decoders">デコーダを初期化中…</string>
+    <string name="permission_group_tools_label">Vitamio ツール</string>
+    <string name="permission_group_tools_description">Vitamioパッケージとリソースにアクセスします。</string>
+    <string name="permission_receive_messages_label">Vitamioのメッセージを受け取ります。</string>
+    <string name="permission_receive_messages_description">Vitamioサービスからの全てのブロードキャストを受信します。</string>
+    <string name="permission_write_providers_label">Vitamioプロバイダを書き込みます。</string>
+    <string name="permission_write_providers_description">Vitamioプロバイダから削除、更新、または新しい項目を作成します。</string>
+    <string name="VideoView_error_title">動画再生失敗</string>
+    <string name="VideoView_error_text_invalid_progressive_playback">申し訳ありません。この動画は、お使いのデバイスにはストリーミングできません。</string>
+    <string name="VideoView_error_text_unknown">申し訳ありません。この動画は再生できません。</string>
+    <string name="VideoView_error_button">OK</string>
+    <string name="mediacontroller_play_pause">再生/停止</string>
+
+</resources>
