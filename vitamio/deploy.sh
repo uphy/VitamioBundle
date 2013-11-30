@@ -18,6 +18,6 @@ deploy $version "ARMv5" "armeabi/libvinit.so"
 deploy $version "ARMv7" "armeabi-v7a/libvinit.so"
 deploy $version "x86" "x86/libvinit.so"
 
-mvn clean deploy -PARMv5
-mvn clean deploy -PARMv7
-mvn clean deploy -Px86
+mvn -U clean deploy -PARMv5
+mvn -U clean deploy -PARMv7
+mvn -U clean deploy -Px86
