@@ -76,8 +76,14 @@ public class InitActivity extends Activity {
       InitActivity ctx = (InitActivity) mContext.get();
       switch (msg.what) {
         case 0:
-          if(ctx.mPD.isShowing()){
-             ctx.mPD.dismiss();
+          try {
+             if(ctx.mPD.isShowing()){
+        	   ctx.mPD.dismiss();
+             }
+          } catch(IllegalArgumentException ex){
+             if(ex.getMessage().contains("View not attached") == false){
+                 throw ex;
+             }
           }
           Intent src = ctx.getIntent();
           Intent i = new Intent();
