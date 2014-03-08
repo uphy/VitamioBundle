@@ -1,6 +1,6 @@
 #!/bin/sh
 
-version=4.2.0
+version=4.2.1
 libdir=../dist/arm_x86/libs
 
 deploy(){
